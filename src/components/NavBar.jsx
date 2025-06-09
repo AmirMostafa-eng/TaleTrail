@@ -29,7 +29,7 @@ export default function NavBar() {
   };
 
   return (
-    <AppBar position="static" sx={{backgroundColor: "var(--dark-gray)"}}>
+    <AppBar position="sticky" sx={{backgroundColor: "var(--dark-gray)"}}>
       <Container maxWidth="lg">
         <Toolbar disableGutters sx={{justifyContent: "space-between"}}>
           <Stack direction="row" alignItems="center">
@@ -49,10 +49,11 @@ export default function NavBar() {
               mr: 2,
               display: {  md: "flex" },
               fontFamily: "Knewave",
-              fontWeight: 700,
+              fontWeight: 400,
               // letterSpacing: '.3rem',
               color: "var(--mustard-yellow)",
               textDecoration: "none",
+              overflow:"visible",
             }}
           >
             TaleTrail

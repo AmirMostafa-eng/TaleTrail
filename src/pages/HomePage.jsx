@@ -34,6 +34,7 @@ import {
   Mail, 
   Bookmark 
 } from '@mui/icons-material';
+import NavBar from '../components/NavBar';
 
 export default function HomePage() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -93,8 +94,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <NavBar />
       {/* App Bar */}
-      <AppBar position="sticky" className="bg-white text-black shadow-sm">
+      {/* <AppBar position="sticky" className="bg-white text-black shadow-sm">
         <Toolbar className="flex justify-between">
           <div className="flex items-center">
             <IconButton
@@ -144,10 +146,10 @@ export default function HomePage() {
             />
           </div>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
 
       {/* Side Drawer */}
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+      {/* <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         <div className="w-64 p-4">
           <Typography variant="h6" className="font-bold mb-6">
             Plog
@@ -173,7 +175,7 @@ export default function HomePage() {
             </ListItem>
           </List>
         </div>
-      </Drawer>
+      </Drawer> */}
 
       {/* Main Content */}
       <Container maxWidth="lg" className="py-8">

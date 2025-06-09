@@ -17,13 +17,14 @@ import {
   CardContent,
   Typography,
   Container,
+  FormHelperText,
 } from "@mui/material";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 
 export default function Signup() {
-  // const theme = useTheme();
+  const nameRegex = /^[A-Za-z]{3,15}$/ ;
 
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -37,25 +38,51 @@ export default function Signup() {
     event.preventDefault();
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+
+  }
+
   return (
-    <Container maxWidth="md" sx={{ marginTop: "100px" }}>
+    <Container maxWidth="md" sx={{ marginTop: "20px" }}>
       <Card sx={{ display: "flex" }}>
         <Box
           maxWidth="sm"
+          margin="auto"
           component="form"
           noValidate
           autoComplete="off"
-          margin={3}
+          padding={3}
+          onSubmit={handleSubmit}
         >
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            color="var(--black-color)"
+            textAlign="center"
+            fontWeight="500"
+            fontSize={32}
+            
+          >
             SignUp to TaleTrail
           </Typography>
           <TextField
             fullWidth
             id="outlined-name-input"
-            label="Name"
+            label="First Name"
+            type="text"
+            sx={{ marginTop: "20px" }}
+            helperText="please enter a valid name (3-15 chars)"
+          />
+          <TextField
+            fullWidth
+            id="outlined-name-input"
+            label="Last Name"
             type="text"
             sx={{ marginY: "20px" }}
+            helperText="please enter a valid name (3-15 chars)"
           />
           <TextField
             fullWidth
@@ -63,12 +90,15 @@ export default function Signup() {
             label="Email"
             type="email"
             sx={{ marginBottom: "20px" }}
+            helperText="please enter a vaild email"
           />
           <FormControl fullWidth variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">
               Password
             </InputLabel>
             <OutlinedInput
+              
+              aria-describedby="pass"
               id="outlined-adornment-password"
               type={showPassword ? "text" : "password"}
               endAdornment={
@@ -90,29 +120,35 @@ export default function Signup() {
               }
               label="Password"
             />
+            <FormHelperText id="pass">please enter a strong password (8-15 chars)</FormHelperText>
           </FormControl>
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="Remember Me"
-          />
+
           <Button
             type="submit"
             variant="contained"
             color="primary"
             fullWidth
-            sx={{ marginBottom: "1rem" }}
+            sx={{
+              marginY: "20px",
+              backgroundColor: "var(--soft-red)",
+              color: "var(--off-white)",
+            }}
           >
             SignUp
           </Button>
-          <Typography>
-            <Link display="block" textAlign="center">
-              Forgot Password ?
+          <Typography textAlign="center">
+            <Link href="/login" color="#374151">
+              Already have an account?
             </Link>
           </Typography>
         </Box>
         <CardMedia
           component="img"
-          sx={{ width: 400 }}
+          // sx={{ width: 400 }}
+          sx={{
+            width: "45%",
+            display: { xs: "none", md: "block" },
+          }}
           image="./src/assets/TaleTrail Logo with Seamless Sketch Integration.png"
           alt="Live from space album cover"
         />

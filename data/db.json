@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "email": "email@a.c",
+      "password": "$2a$10$DonmYae.niD8JS8n2objSe6wAnOIOIstq1u/QgkRgukAcVBLBrNtu",
+      "name": "Amir Mostafa",
+      "id": 1
+    },
+    {
+      "email": "e@e.c",
+      "password": "$2a$10$94fWtSf4JgXqejhpMbPs3u6kARleauLBYyLAXv/D0wPePVP8p0bpe",
+      "name": "Anonymous",
+      "id": 2
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "username": "travel_enthusiast",
+      "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
+      "location": "Bali, Indonesia",
+      "image": "https://images.unsplash.com/photo-1691494314694-2e5acbfb1cfc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3Vuc2V0JTIwc3Vuc2V0fGVufDB8fDB8fHww",
+      "caption": "Sunset views in Bali never disappoint! #travel #bali #sunset",
+      "likes": 243,
+      "tags": ["travel", "bali", "sunset"],
+      "date": "2025-05-28T10:16:02.325Z"
+    },
+    {
+      "id": 2,
+      "username": "food_explorer",
+      "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
+      "location": "Tokyo, Japan",
+      "image": "https://source.unsplash.com/random/800x600/?sushi",
+      "caption": "Authentic sushi experience in Tokyo! #food #japan #sushi",
+      "likes": 187,
+      "tags": ["food", "japan", "sushi"],
+      "date": "2025-05-22T10:36:18.594Z"
+    },
+    {
+      "id": 3,
+      "username": "urban_photographer",
+      "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
+      "location": "New York, USA",
+      "image": "https://source.unsplash.com/random/800x600/?newyork",
+      "caption": "City lights and urban vibes. #photography #nyc #urban",
+      "likes": 312,
+      "tags": ["photography", "nyc", "urban"],
+      "date": "2025-05-30T10:36:18.594Z"
+    }
+  ]
+}
