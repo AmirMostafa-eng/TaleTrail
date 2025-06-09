@@ -22,7 +22,6 @@ import {
 
 export default function Login() {
   const [emailError, setEmailError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState();
   const [errorData, setErrorData] = useState(false);
 
   const [email, setEmail] = useState();
@@ -53,9 +52,7 @@ export default function Login() {
 
   const emailCheck = () => {
     // client-side check
-    setErrorMessage("please enter a valid email");
     emailRegex.test(email) ? setEmailError(false) : setEmailError(true);
-    // console.log(errorMessage);
   };
 
   const checkData = (event) => {
@@ -67,6 +64,7 @@ export default function Login() {
     //client-side check for password if it's empty
     if (!passwordRegex.test(password.trim())) {
       setErrorData(true);
+      
       return;
     }
 
@@ -115,7 +113,7 @@ export default function Login() {
             label="Email"
             type="email"
             sx={{ marginY: "20px" }}
-            helperText={emailError ? errorMessage : null}
+            helperText={emailError ? "please enter a valid email" : null}
           />
 
           <FormControl fullWidth variant="outlined">
