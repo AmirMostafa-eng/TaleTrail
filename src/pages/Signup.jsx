@@ -37,14 +37,14 @@ export default function Signup() {
     firstName: /^[A-Za-z]{3,15}$/,
     lastName: /^[A-Za-z]{3,15}$/,
     email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,15}$/
+    password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/
   };
 
   const helperTexts = {
     firstName: "Please enter a valid name (3-15 letters, no numbers/special chars)",
     lastName: "Please enter a valid name (3-15 letters, no numbers/special chars)",
     email: "Please enter a valid email address",
-    password: "Password must be 8-15 chars with at least one letter and one number"
+    password: "Password must be 8-20 chars with at least one letter and one number"
   };
 
 // =========================

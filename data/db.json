@@ -2,13 +2,13 @@
   "users": [
     {
       "email": "email@a.c",
-      "password": "$2a$10$DonmYae.niD8JS8n2objSe6wAnOIOIstq1u/QgkRgukAcVBLBrNtu",
+      "password": "$2a$10$DonmYae",
       "name": "Amir Mostafa",
       "id": 1
     },
     {
       "email": "e@e.c",
-      "password": "$2a$10$94fWtSf4JgXqejhpMbPs3u6kARleauLBYyLAXv/D0wPePVP8p0bpe",
+      "password": "$2a$10$94fWtS",
       "name": "Anonymous",
       "id": 2
     }
