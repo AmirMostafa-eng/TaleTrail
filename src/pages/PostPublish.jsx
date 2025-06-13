@@ -23,7 +23,7 @@ const PostPublish = () => {
   return (
     <>
     <NavBar />
-    <Container maxWidth="md" sx={{ marginY: "20px" }} >
+    <Container maxWidth="sm" sx={{ marginY: "20px" }} >
       <div className="max-w-5xl mx-auto bg-base-100 rounded-xl shadow-xl overflow-hidden">
         <div className="bg-gray-800 p-6 text-primary-content">
           <h1 className="text-3xl font-bold">Create New Post</h1>

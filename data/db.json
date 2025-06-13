@@ -15,37 +15,36 @@
   ],
   "posts": [
     {
-      "id": 1,
-      "username": "travel_enthusiast",
-      "avatar": "https://randomuser.me/api/portraits/women/44.jpg",
-      "location": "Bali, Indonesia",
-      "image": "https://images.unsplash.com/photo-1691494314694-2e5acbfb1cfc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c3Vuc2V0JTIwc3Vuc2V0fGVufDB8fDB8fHww",
-      "caption": "Sunset views in Bali never disappoint! #travel #bali #sunset",
-      "likes": 243,
-      "tags": ["travel", "bali", "sunset"],
-      "date": "2025-05-28T10:16:02.325Z"
+      "postId": 1,
+      "publisherId": 1,
+      "title": "First Post",
+      "content": "This is Alice's first post.",
+      "image": "https://th.bing.com/th/id/R.ad578cffe7d1d68c4b26188f65fd9c67?rik=JaMpOgbBkuKa6Q&pid=ImgRaw&r=0",
+      "publishedAt":"12/5/2025"
     },
     {
-      "id": 2,
-      "username": "food_explorer",
-      "avatar": "https://randomuser.me/api/portraits/men/32.jpg",
-      "location": "Tokyo, Japan",
-      "image": "https://source.unsplash.com/random/800x600/?sushi",
-      "caption": "Authentic sushi experience in Tokyo! #food #japan #sushi",
-      "likes": 187,
-      "tags": ["food", "japan", "sushi"],
-      "date": "2025-05-22T10:36:18.594Z"
+      "postId": 2,
+      "publisherId": 2,
+      "title": "Hello World",
+      "content": "Bob says hello!",
+      "image": "https://via.placeholder.com/150",
+      "publishedAt":"10/5/2025"
     },
     {
-      "id": 3,
-      "username": "urban_photographer",
-      "avatar": "https://randomuser.me/api/portraits/women/68.jpg",
-      "location": "New York, USA",
-      "image": "https://source.unsplash.com/random/800x600/?newyork",
-      "caption": "City lights and urban vibes. #photography #nyc #urban",
-      "likes": 312,
-      "tags": ["photography", "nyc", "urban"],
-      "date": "2025-05-30T10:36:18.594Z"
+      "postId": 3,
+      "publisherId": 2,
+      "title": "Hello World",
+      "content": "Bob says hello!",
+      "image": "https://via.placeholder.com/150",
+      "publishedAt":"10/5/2025"
+    },
+    {
+      "postId": 4,
+      "publisherId": 1,
+      "title": "Hello World",
+      "content": "Bob says hello!",
+      "image": "https://via.placeholder.com/150",
+      "publishedAt":"10/5/2025"
     }
   ]
 }
