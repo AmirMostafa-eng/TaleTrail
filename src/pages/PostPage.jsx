@@ -11,7 +11,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: '2px solid #F5F5F5',
   boxShadow: 24,
   p: 4,
   borderRadius: '20px'
@@ -19,7 +19,7 @@ const style = {
 
 export default function PostsPage(props) {
   
-  const {posts , users , loggedInUserId , handlePostDeleted} = props;
+  const {posts , users , loggedInUserId , handlePostDeleted , handleEditPost} = props;
   const getUser = (id) => users.find((user) => user.id === id);
 
   const [open, setOpen] = React.useState(false);
@@ -35,6 +35,7 @@ export default function PostsPage(props) {
   const handleDeletePost = async (e) =>{
     e.preventDefault();
     if(postToDelete){
+      // setPosts((preValue)=> [...preValue.filter(post => post.id !== postToDelete.id)])
       await axios.delete(`http://localhost:3001/posts/${postToDelete.id}`);
     }
     handleClose();
@@ -52,6 +53,7 @@ export default function PostsPage(props) {
             user={user}
             isOwner={post.publisherId === loggedInUserId}
             handleOpen={handleOpen}
+            handleEditPost = {handleEditPost}
           />
         ) : null;
       })}

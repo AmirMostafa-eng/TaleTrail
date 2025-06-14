@@ -96,6 +96,7 @@ export default function Signup({ users }) {
       const dataToSend = {
         email: formData.email,
         password: formData.password,
+        confirmPass: formData.password,
         name: `${formData.firstName} ${formData.lastName}`,
       };
       if (users.filter((u) => u.email == dataToSend.email)[0]) {
@@ -104,7 +105,7 @@ export default function Signup({ users }) {
       }
       // Calling API
       console.log(dataToSend);
-      await axios.post('http://localhost:3001/users', dataToSend);
+      await axios.post('http://localhost:3001/users', dataToSend , );
       navigate('/login');
     }
   };

@@ -5,6 +5,13 @@
       "password": "$2a$10$kFFSGMsGgLel7BP868hHCejJ5/elKhMorFvvzgochadmEREzMxKAO",
       "name": "amir mostafa",
       "id": 1
+    },
+    {
+      "email": "amir119@gmail.com",
+      "password": "$2a$10$BBa82jtPdTDvaxX1p19acu8QIjOeIC.MvJOtyHtGYD5L9rICoKNWe",
+      "confirmPass": "amirmostafa1",
+      "name": "amir mostafa",
+      "id": 2
     }
   ],
   "posts": [
@@ -17,16 +24,8 @@
       "publishedAt": "12/5/2025"
     },
     {
-      "id": 2,
       "publisherId": 1,
-      "title": "Hello World",
-      "content": "Bob says hello!",
-      "image": "https://via.placeholder.com/150",
-      "publishedAt": "10/5/2025"
-    },
-    {
-      "publisherId": 1,
-      "title": "first post",
+      "title": "first post to be updated",
       "content": "in the name of Allah",
       "image": "https://images.unsplash.com/photo-1740448868355-0772ebaf9371?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "publishedAt": "14/6/2025",

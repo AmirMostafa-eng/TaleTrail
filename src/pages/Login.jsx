@@ -96,9 +96,12 @@ export default function Login({ users, loggedInUser, handleLogIn }) {
       .then((res) => {
         const { accessToken, user } = res.data;
         sessionStorage.setItem("loggedUser", JSON.stringify(user));
+        // optionally store accessToken too
+        sessionStorage.setItem("token", accessToken);
         navigate("/");
       })
       .catch((err) => {
+        console.log(err);
         setErrorData(true);
       });
   };

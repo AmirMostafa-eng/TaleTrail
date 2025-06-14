@@ -12,7 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router";
 
-export default function PostCard({ post, user, isOwner , handleOpen}) {
+export default function PostCard({ post, user, isOwner , handleOpen , handleEditPost}) {
   const avatarLetter = user.name.charAt(0).toUpperCase();
 
   return (
@@ -29,7 +29,7 @@ export default function PostCard({ post, user, isOwner , handleOpen}) {
           isOwner && (
             <div>
               <Link to="/post">
-                <IconButton>
+                <IconButton onClick={()=> handleEditPost(post)}>
                   <EditIcon sx={{ color: "var(--mustard-yellow)" }} />
                 </IconButton>
               </Link>
