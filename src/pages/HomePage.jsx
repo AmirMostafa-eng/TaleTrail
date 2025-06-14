@@ -6,7 +6,7 @@ import PostsPage from "./PostPage";
 import { Link } from "react-router";
 
 export default function HomePage(props) {
-  const { posts, users, loggedInUserId } = props;
+  const { posts, users, loggedInUserId , handlePostDeleted } = props;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -25,6 +25,7 @@ export default function HomePage(props) {
           posts={posts}
           users={users}
           loggedInUserId={loggedInUserId}
+          handlePostDeleted={handlePostDeleted}
         />
       </Container>
     </div>

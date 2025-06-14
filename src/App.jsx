@@ -15,6 +15,12 @@ function App() {
     setPosts([...posts,post]);
   }
 
+  const handlePostDeleted = (post) => {
+    const newPosts = [...posts];
+    newPosts.filter((p)=> p.id !== post.id);
+    setPosts([...posts]);
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       const [postsRes, usersRes] = await Promise.all([
@@ -40,6 +46,7 @@ function App() {
               posts={posts}
               users={users}
               loggedInUserId={loggedInUserId}
+              handlePostDeleted={handlePostDeleted}
             />
           }
         />

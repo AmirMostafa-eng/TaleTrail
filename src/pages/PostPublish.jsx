@@ -33,15 +33,14 @@ export default function PostPublish(props){
     title:title,
     content: content,
     image: featuredImage,
-    publishedAt:`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`,
-    postId: 20
+    publishedAt:`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`
   }
     console.log(dataToSend);
 
     const newPost = await axios.post('http://localhost:3001/posts' , dataToSend);
-    // handlePublishPost(newPost);
+    handlePublishPost(newPost);
 
-    // navigate('/');
+    navigate('/');
   };
 
   return (

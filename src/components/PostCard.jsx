@@ -3,22 +3,16 @@ import {
   Card,
   CardHeader,
   CardContent,
-  CardActions,
   Avatar,
   Typography,
   IconButton,
-  Box,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-// import { Margin } from '@mui/icons-material';
 import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router";
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import axios from '../api/axios';
-// import { useState } from 'react';
 
-export default function PostCard({ post, user, isOwner }) {
+export default function PostCard({ post, user, isOwner , handleOpen}) {
   const avatarLetter = user.name.charAt(0).toUpperCase();
 
   return (
@@ -39,7 +33,7 @@ export default function PostCard({ post, user, isOwner }) {
                   <EditIcon sx={{ color: "var(--mustard-yellow)" }} />
                 </IconButton>
               </Link>
-              <IconButton>
+              <IconButton onClick={()=>handleOpen(post)}>
                 <DeleteIcon sx={{ color: "var(--soft-red)" }} />
               </IconButton>
             </div>
