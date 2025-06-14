@@ -1,13 +1,13 @@
 {
   "users": [
     {
-      "email": "email@a.c",
+      "email": "email@a.com",
       "password": "$2a$10$DonmYae",
       "name": "Amir Mostafa",
       "id": 1
     },
     {
-      "email": "e@e.c",
+      "email": "e@e.com",
       "password": "$2a$10$94fWtS",
       "name": "Anonymous",
       "id": 2

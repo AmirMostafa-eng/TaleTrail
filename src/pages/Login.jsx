@@ -1,6 +1,6 @@
 import "tailwindcss";
 import Box from "@mui/material/Box";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import {
   FormControl,
@@ -17,10 +17,20 @@ import {
   Container,
   CardMedia,
 } from "@mui/material";
+import { useNavigate } from "react-router";
 // import Visibility from "@mui/icons-material/Visibility";
 // import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-export default function Login() {
+export default function Login({users , loggedInUserId}) {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedInUserId) {
+      navigate("/");
+    }
+  }, [loggedInUserId, navigate]);
+
   const [emailError, setEmailError] = useState(false);
   const [errorData, setErrorData] = useState(false);
 
@@ -64,12 +74,23 @@ export default function Login() {
     //client-side check for password if it's empty
     if (!passwordRegex.test(password.trim())) {
       setErrorData(true);
-      
       return;
     }
 
     //back-end check (on Submit)
-    console.log("pass");
+    const user = users.filter(u => u.email == email)[0];
+    if(!user){
+      setErrorData(true);
+      return;
+    }else{
+      if (user.password == password) {
+        sessionStorage.setItem('loggedUser', JSON.stringify(user));
+        navigate('/');
+      }else{
+        console.log('dont match')
+        setErrorData(true);
+      }
+    }
   };
 
   return (

@@ -9,7 +9,9 @@ import axios from "./api/axios";
 function App() {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
-  const loggedInUserId = 1;
+  let loggedInUserId = sessionStorage.getItem('loggedUser') || null ;
+
+  // console.log(loggedInUserId)
 
   const handlePublishPost = (post) => {
     setPosts([...posts,post]);
@@ -37,8 +39,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login users={users} loggedInUserId={loggedInUserId}/>} />
+        <Route path="/signup" element={<Signup users={users}/>} />
         <Route
           path="/"
           element={
