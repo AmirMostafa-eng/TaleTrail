@@ -10,15 +10,11 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Stack } from "@mui/material";
-import { Link, useNavigate } from "react-router";
-
-// const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Logout"];
+import { Link } from "react-router";
 
 export default function NavBar({ userName , handleLogOut}) {
   console.log(userName);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  // const navigate = useNavigate();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);

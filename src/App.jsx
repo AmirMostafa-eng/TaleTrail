@@ -14,7 +14,7 @@ function App() {
 
   // console.log(loggedInUserId)
   const handleLogIn =()=>{
-    setCurrentUser(JSON.parse(sessionStorage.getItem('loggedUser')));
+    setCurrentUser(JSON.parse(sessionStorage.getItem('loggedUser')) );
   }
   const handleLogOut =()=>{
     setCurrentUser(null);
@@ -31,6 +31,7 @@ function App() {
   }
 
   useEffect(() => {
+    setCurrentUser(JSON.parse(sessionStorage.getItem('loggedUser')) || null);
     const fetchData = async () => {
       const [postsRes, usersRes] = await Promise.all([
         axios.get("/posts"),

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import axios from '../api/axios';
 import PostCard from '../components/PostCard';
 import Modal from '@mui/material/Modal';

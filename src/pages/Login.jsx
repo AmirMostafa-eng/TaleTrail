@@ -16,9 +16,10 @@ import {
   CardMedia,
 } from "@mui/material";
 import { useNavigate } from "react-router";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import axios from "../api/axios";
 
-export default function Login({users , loggedInUser , handleLogIn}) {
-
+export default function Login({ users, loggedInUser, handleLogIn }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function Login({users , loggedInUser , handleLogIn}) {
       handleLogIn();
       navigate("/");
     }
-  }, [loggedInUser, navigate , handleLogIn]);
+  }, [loggedInUser, navigate, handleLogIn]);
 
   const [emailError, setEmailError] = useState(false);
   const [errorData, setErrorData] = useState(false);
@@ -75,19 +76,31 @@ export default function Login({users , loggedInUser , handleLogIn}) {
     }
 
     //back-end check (on Submit)
-    const user = users.filter(u => u.email == email)[0];
-    if(!user){
-      setErrorData(true);
-      return;
-    }else{
-      if (user.password == password) {
-        sessionStorage.setItem('loggedUser', JSON.stringify(user));
-        navigate('/');
-      }else{
-        console.log('dont match')
+    // const user = users.filter(u => u.email == email)[0];
+    // if(!user){
+    //   setErrorData(true);
+    //   return;
+    // }else{
+    //   if (user.password == password) {
+    //     sessionStorage.setItem('loggedUser', JSON.stringify(user));
+    //     navigate('/');
+    //   }else{
+    //     console.log('dont match')
+    //     setErrorData(true);
+    //   }
+    // }
+    axios.post("/login", {
+        email,
+        password,
+      })
+      .then((res) => {
+        const { accessToken, user } = res.data;
+        sessionStorage.setItem("loggedUser", JSON.stringify(user));
+        navigate("/");
+      })
+      .catch((err) => {
         setErrorData(true);
-      }
-    }
+      });
   };
 
   return (
@@ -157,7 +170,7 @@ export default function Login({users , loggedInUser , handleLogIn}) {
                     onMouseUp={handleMouseUpPassword}
                     edge="end"
                   >
-                    {/* {showPassword ? <VisibilityOff /> : <Visibility />} */}
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               }

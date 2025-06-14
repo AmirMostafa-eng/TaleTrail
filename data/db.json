@@ -1,16 +1,10 @@
 {
   "users": [
     {
-      "email": "email@a.com",
-      "password": "$2a$10$DonmYae",
-      "name": "Amir Mostafa",
+      "email": "am119@gmail.com",
+      "password": "$2a$10$kFFSGMsGgLel7BP868hHCejJ5/elKhMorFvvzgochadmEREzMxKAO",
+      "name": "amir mostafa",
       "id": 1
-    },
-    {
-      "email": "e@e.com",
-      "password": "c",
-      "name": "Anonymous",
-      "id": 2
     }
   ],
   "posts": [
@@ -24,7 +18,7 @@
     },
     {
       "id": 2,
-      "publisherId": 2,
+      "publisherId": 1,
       "title": "Hello World",
       "content": "Bob says hello!",
       "image": "https://via.placeholder.com/150",
