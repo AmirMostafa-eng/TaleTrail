@@ -4,8 +4,6 @@ import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import {
   FormControl,
-  FormControlLabel,
-  Checkbox,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -18,23 +16,22 @@ import {
   CardMedia,
 } from "@mui/material";
 import { useNavigate } from "react-router";
-// import Visibility from "@mui/icons-material/Visibility";
-// import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-export default function Login({users , loggedInUserId}) {
+export default function Login({users , loggedInUser , handleLogIn}) {
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (loggedInUserId) {
+    if (loggedInUser) {
+      handleLogIn();
       navigate("/");
     }
-  }, [loggedInUserId, navigate]);
+  }, [loggedInUser, navigate , handleLogIn]);
 
   const [emailError, setEmailError] = useState(false);
   const [errorData, setErrorData] = useState(false);
 
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

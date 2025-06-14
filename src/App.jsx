@@ -9,9 +9,16 @@ import axios from "./api/axios";
 function App() {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
-  let loggedInUserId = sessionStorage.getItem('loggedUser') || null ;
+  let loggedInUser = JSON.parse(sessionStorage.getItem('loggedUser')) || null ;
+  const [currentUser , setCurrentUser] = useState(loggedInUser);
 
   // console.log(loggedInUserId)
+  const handleLogIn =()=>{
+    setCurrentUser(JSON.parse(sessionStorage.getItem('loggedUser')));
+  }
+  const handleLogOut =()=>{
+    setCurrentUser(null);
+  }
 
   const handlePublishPost = (post) => {
     setPosts([...posts,post]);
@@ -39,7 +46,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<Login users={users} loggedInUserId={loggedInUserId}/>} />
+        <Route path="/login" element={<Login users={users} loggedInUser={currentUser && currentUser} handleLogIn ={handleLogIn}/>} />
         <Route path="/signup" element={<Signup users={users}/>} />
         <Route
           path="/"
@@ -47,12 +54,14 @@ function App() {
             <HomePage
               posts={posts}
               users={users}
-              loggedInUserId={loggedInUserId}
               handlePostDeleted={handlePostDeleted}
+              currentUser = {currentUser}
+              handleLogOut = {handleLogOut}
+              
             />
           }
         />
-        <Route path="/post" element={<PostPublish loggedInUserId={loggedInUserId} handlePublishPost={handlePublishPost}/>} />
+        <Route path="/post" element={<PostPublish loggedInUserId={loggedInUser && loggedInUser.id} handlePublishPost={handlePublishPost}/>} />
       </Routes>
     </>
   );

@@ -3,14 +3,24 @@ import { Fab, Container } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import NavBar from "../components/NavBar";
 import PostsPage from "./PostPage";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useEffect } from "react";
 
 export default function HomePage(props) {
-  const { posts, users, loggedInUserId , handlePostDeleted } = props;
+  const { posts, users, handlePostDeleted ,currentUser ,handleLogOut  } = props;
+  const navigate = useNavigate();
+
+  const loggedUser = JSON.parse(sessionStorage.getItem('loggedUser'));
+  useEffect(()=>{
+    if (!loggedUser) {
+      navigate('/login');
+    }
+  },[currentUser , navigate , loggedUser]);
+
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <NavBar />
+      <NavBar userName = {loggedUser && loggedUser.name} handleLogOut={handleLogOut}/>
       <Container maxWidth="lg" className="py-4">
         {/* Create Post Button */}
         <Link to="/post" className="fixed bottom-8 right-8 z-10">
@@ -24,7 +34,7 @@ export default function HomePage(props) {
         <PostsPage
           posts={posts}
           users={users}
-          loggedInUserId={loggedInUserId}
+          loggedInUserId={loggedUser && loggedUser.id}
           handlePostDeleted={handlePostDeleted}
         />
       </Container>
