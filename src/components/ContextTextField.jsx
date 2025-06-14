@@ -7,6 +7,7 @@ const ContentTextField = ({ content, setContent }) => {
   
   return (
     <TextField
+      required
       fullWidth
       label="Post Content"
       variant="outlined"

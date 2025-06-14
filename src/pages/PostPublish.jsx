@@ -1,23 +1,47 @@
 // pages/PostPublish.jsx
 import React, { useState } from 'react';
-import { TextField, Button, Chip, Container } from '@mui/material';
+import { TextField, Button, Chip, Container, FormHelperText } from '@mui/material';
 import ContentTextField from '../components/ContextTextField';
 import ImageUploader from '../components/ImageUploader';
 import NavBar from '../components/NavBar';
+import { useNavigate } from 'react-router';
+import axios from '../api/axios';
+import TitleTextField from '../components/TitleTextField';
 
 
-const PostPublish = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [featuredImage, setFeaturedImage] = useState(null);
+export default function PostPublish(props){
+  const {loggedInUserId , post , handlePublishPost} = props;
+  
+  const [title, setTitle] = useState(post? post.title : '');
+  const [content, setContent] = useState(post? post.content : '');
+  const [featuredImage, setFeaturedImage] = useState(post? post.image : null);
+  const [emptyImage , setEmptyImage] = useState(false);
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const date = new Date();
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      title,
-      content,
-      featuredImage,
-    });
+    if (featuredImage == null) {
+      setEmptyImage(true) ;
+      return;
+    }
+    
+    const dataToSend = {
+    publisherId: loggedInUserId,
+    title:title,
+    content: content,
+    image: featuredImage,
+    publishedAt:`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`,
+    postId: 20
+  }
+    console.log(dataToSend);
+
+    const newPost = await axios.post('http://localhost:3001/posts' , dataToSend);
+    // handlePublishPost(newPost);
+
+    // navigate('/');
   };
 
   return (
@@ -30,22 +54,16 @@ const PostPublish = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
-          <TextField
-            fullWidth
-            label="Post Title"
-            variant="outlined"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            sx={{ marginBottom: '20px' }}
-          />
+          <TitleTextField title={title} setTitle={setTitle}/>
 
           <ContentTextField content={content} setContent={setContent} />
 
           <ImageUploader 
+            setEmptyImage ={setEmptyImage}
             featuredImage={featuredImage} 
             setFeaturedImage={setFeaturedImage} 
           />
+          {emptyImage &&<FormHelperText sx={{textAlign: 'center'}} error>please choose an image</FormHelperText>}
 
           <div className="flex items-center justify-center p-4 bg-base-200 rounded-lg">
             <Button
@@ -63,5 +81,3 @@ const PostPublish = () => {
     </>
   );
 };
-
-export default PostPublish;

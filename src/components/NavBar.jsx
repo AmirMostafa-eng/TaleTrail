@@ -42,8 +42,8 @@ export default function NavBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component="p"
+            // href="/"
             sx={{
               mr: 2,
               display: {  md: "flex" },

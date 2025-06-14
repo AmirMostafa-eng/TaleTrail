@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { TextField, Button, Box } from '@mui/material';
 import { CloudUpload, Delete } from '@mui/icons-material';
 
-const ImageUploader = ({ featuredImage, setFeaturedImage }) => {
+const ImageUploader = ({ featuredImage, setFeaturedImage , setEmptyImage}) => {
   const [imageUrl, setImageUrl] = useState('');
 
   const handleUrlSubmit = (e) => {
     e.preventDefault();
-    e.stopPropagation(); // Add this to prevent form submission
+    e.stopPropagation(); 
     if (imageUrl.trim()) {
       setFeaturedImage(imageUrl);
       setImageUrl('');
+      setEmptyImage()
     }
   };
 
@@ -41,8 +42,8 @@ const ImageUploader = ({ featuredImage, setFeaturedImage }) => {
             <p className="text-sm text-gray-500 mb-4">Enter image URL or upload from device</p>
             
             <Box 
-              component="form" 
-              onSubmit={handleUrlSubmit}
+              component="div" 
+              
               className="flex gap-2"
             >
               <TextField

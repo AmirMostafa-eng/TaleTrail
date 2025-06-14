@@ -4,25 +4,9 @@ import PostCard from '../components/PostCard';
 
 
 
-const PostsPage = () => {
-  const [posts, setPosts] = useState([]);
-  const [users, setUsers] = useState([]);
-  const loggedInUserId = 1; 
-
+export default function PostsPage(props) {
   
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const [postsRes, usersRes] = await Promise.all([
-        axios.get('/posts'),
-        axios.get('/users'),
-      ]);
-      setPosts(postsRes.data);
-      setUsers(usersRes.data);
-    };
-
-    fetchData();
-  }, []);
+  const {posts , users , loggedInUserId} = props;
 
   const getUser = (id) => users.find((user) => user.id === id);
 
@@ -43,4 +27,3 @@ const PostsPage = () => {
   );
 };
 
-export default PostsPage;
