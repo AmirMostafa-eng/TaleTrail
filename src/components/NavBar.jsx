@@ -27,6 +27,7 @@ export default function NavBar({ userName , handleLogOut}) {
   const handleLoggingOut =()=>{
     handleCloseUserMenu();
     sessionStorage.removeItem('loggedUser');
+    sessionStorage.removeItem('token');
     handleLogOut();
   }
 

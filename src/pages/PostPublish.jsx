@@ -15,7 +15,7 @@ import axios from "../api/axios";
 import TitleTextField from "../components/TitleTextField";
 
 export default function PostPublish(props) {
-  const { loggedInUserId, post, handlePublishPost, handleEditPost } = props;
+  const { loggedInUserId, post, handlePublishPost } = props;
 
   const [title, setTitle] = useState(post ? post.title : "");
   const [content, setContent] = useState(post ? post.content : "");

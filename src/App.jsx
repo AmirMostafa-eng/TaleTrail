@@ -20,6 +20,7 @@ function App() {
   };
   const handleLogOut = () => {
     setCurrentUser(null);
+    navigate('/')
   };
 
   const handlePublishPost = (post) => {
