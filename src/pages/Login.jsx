@@ -24,7 +24,7 @@ export default function Login({ users, loggedInUser, handleLogIn }) {
 
   useEffect(() => {
     if (loggedInUser) {
-      handleLogIn();
+      // handleLogIn();
       navigate("/");
     }
   }, [loggedInUser, navigate, handleLogIn]);
@@ -76,19 +76,6 @@ export default function Login({ users, loggedInUser, handleLogIn }) {
     }
 
     //back-end check (on Submit)
-    // const user = users.filter(u => u.email == email)[0];
-    // if(!user){
-    //   setErrorData(true);
-    //   return;
-    // }else{
-    //   if (user.password == password) {
-    //     sessionStorage.setItem('loggedUser', JSON.stringify(user));
-    //     navigate('/');
-    //   }else{
-    //     console.log('dont match')
-    //     setErrorData(true);
-    //   }
-    // }
     axios.post("/login", {
         email,
         password,

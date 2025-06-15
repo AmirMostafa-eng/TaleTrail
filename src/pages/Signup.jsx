@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import {
   FormControl,
@@ -18,9 +18,18 @@ import {
 import { useNavigate } from "react-router";
 import axios from "../api/axios";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { ToastContainer, toast } from 'react-toastify';
 
-export default function Signup({ users }) {
+export default function Signup({ users , loggedInUser }) {
   const navigate = useNavigate();
+  const notify = () => toast.success("user created successfully!");
+
+  useEffect(() => {
+    if (loggedInUser) {
+      // handleLogIn();
+      navigate("/");
+    }
+  }, [loggedInUser, navigate]);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -89,7 +98,7 @@ export default function Signup({ users }) {
     return isValid;
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (validateForm()) {
       // Form is valid
@@ -105,13 +114,17 @@ export default function Signup({ users }) {
       }
       // Calling API
       console.log(dataToSend);
-      await axios.post('http://localhost:3001/users', dataToSend , );
-      navigate('/login');
+      notify();
+      setTimeout(async()=>{
+        await axios.post('http://localhost:3001/users', dataToSend , );
+        navigate('/login');
+      },3000)
     }
   };
 
   return (
     <Container maxWidth="md" sx={{ marginTop: "20px" }}>
+      <ToastContainer />
       <Card sx={{ display: "flex" }}>
         <Box
           maxWidth="sm"

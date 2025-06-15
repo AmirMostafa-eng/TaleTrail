@@ -69,7 +69,7 @@ function App() {
             />
           }
         />
-        <Route path="/signup" element={<Signup users={users} />} />
+        <Route path="/signup" element={<Signup users={users} loggedInUser={currentUser && currentUser}/>} />
         <Route
           path="/"
           element={

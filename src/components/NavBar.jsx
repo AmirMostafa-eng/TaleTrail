@@ -70,7 +70,7 @@ export default function NavBar({ userName , handleLogOut}) {
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
-                    alt={userName}
+                    alt={userName.toUpperCase()}
                     src="/static/images/avatar/2.jpg"
                     sx={{ backgroundColor: "var(--mustard-yellow)" }}
                   />

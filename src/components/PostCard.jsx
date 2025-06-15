@@ -49,8 +49,8 @@ export default function PostCard({ post, user, isOwner , handleOpen , handleEdit
         alt={post.title}
       />
       <CardContent>
-        <Typography variant="h5" fontSize={20} fontWeight={500}>{post.title}</Typography>
-        <Typography variant="body1" fontSize={14}>{post.content}</Typography>
+        <Typography variant="h5" fontSize={18} fontWeight={500}>{post.title}</Typography>
+        <Typography variant="body1" sx={{color: 'var(--dark-gray)'}} fontSize={12}>{post.content}</Typography>
       </CardContent>
     </Card>
   );

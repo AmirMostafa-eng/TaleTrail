@@ -13,10 +13,16 @@ import NavBar from "../components/NavBar";
 import { Link, useNavigate } from "react-router";
 import axios from "../api/axios";
 import TitleTextField from "../components/TitleTextField";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function PostPublish(props) {
   const { loggedInUserId, post, handlePublishPost } = props;
 
+  const notify = () => {
+    post ? toast.success("Post Updated Successfully!")
+    : toast.success("Post Published Successfully!");
+  }
+  
   const [title, setTitle] = useState(post ? post.title : "");
   const [content, setContent] = useState(post ? post.content : "");
   const [featuredImage, setFeaturedImage] = useState(post ? post.image : null);
@@ -25,7 +31,7 @@ export default function PostPublish(props) {
   const navigate = useNavigate();
   const date = new Date();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (featuredImage == null) {
       setEmptyImage(true);
@@ -44,36 +50,41 @@ export default function PostPublish(props) {
 
     console.log(dataToSend);
     const token = sessionStorage.getItem("token");
+    notify();
     if (!post) {
-      const newPost = await axios.post(
+      setTimeout(async ()=>{
+        const newPost = await axios.post(
         "http://localhost:3001/posts",
         dataToSend
       );
       handlePublishPost(newPost);
+      },3000)
     } else {
-      axios
-        .patch(
-          `/posts/${post.id}`,
-          { image: featuredImage, title: title, content: content },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((res) => {
-          console.log("Updated successfully", res.data);
-        })
-        .catch((err) => {
-          console.error("Error updating post", err);
-        });
+      setTimeout(()=>{
+        axios.patch(
+            `/posts/${post.id}`,
+            { image: featuredImage, title: title, content: content },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then((res) => {
+            console.log("Updated successfully", res.data);
+          })
+          .catch((err) => {
+            console.error("Error updating post", err);
+          });
+      },3000)
     }
-    navigate("/");
+    setTimeout(()=>{navigate("/")},3000);
   };
 
   return (
     <>
       <NavBar />
+      <ToastContainer />
       <Container maxWidth="sm" sx={{ marginY: "20px" }}>
         <div className="max-w-5xl mx-auto bg-base-100 rounded-xl shadow-xl overflow-hidden">
           <div className="bg-gray-800 p-6 text-primary-content">
