@@ -1,4 +1,5 @@
 import { Route, Routes, useNavigate } from "react-router";
+import UserPage from "./pages/UserPage";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -11,7 +12,7 @@ function App() {
   const [users, setUsers] = useState([]);
   let loggedInUser = JSON.parse(sessionStorage.getItem("loggedUser")) || null;
   const [currentUser, setCurrentUser] = useState(loggedInUser);
-  const [postToEdit , setPostToEdit] = useState(null);
+  const [postToEdit, setPostToEdit] = useState(null);
   const navigate = useNavigate();
 
   // console.log(loggedInUserId)
@@ -20,21 +21,21 @@ function App() {
   };
   const handleLogOut = () => {
     setCurrentUser(null);
-    navigate('/')
+    navigate("/");
   };
 
   const handlePublishPost = (post) => {
     setPosts([...posts, post]);
   };
 
-  const handleNewPost =()=>{
+  const handleNewPost = () => {
     setPostToEdit(null);
-  }
+  };
 
-  const handleEditPost = (post)=>{
+  const handleEditPost = (post) => {
     setPostToEdit(post);
-    navigate('/post')
-  }
+    navigate("/post");
+  };
 
   const handlePostDeleted = (post) => {
     const newPosts = [...posts];
@@ -69,7 +70,12 @@ function App() {
             />
           }
         />
-        <Route path="/signup" element={<Signup users={users} loggedInUser={currentUser && currentUser}/>} />
+        <Route
+          path="/signup"
+          element={
+            <Signup users={users} loggedInUser={currentUser && currentUser} />
+          }
+        />
         <Route
           path="/"
           element={
@@ -80,8 +86,8 @@ function App() {
               currentUser={currentUser}
               handleLogOut={handleLogOut}
               setPosts={setPosts}
-              handleEditPost = {handleEditPost}
-              handleNewPost ={handleNewPost}
+              handleEditPost={handleEditPost}
+              handleNewPost={handleNewPost}
             />
           }
         />
@@ -91,11 +97,12 @@ function App() {
             <PostPublish
               loggedInUserId={loggedInUser && loggedInUser.id}
               handlePublishPost={handlePublishPost}
-              post = {postToEdit}
-              handleEditPost ={handleEditPost}
+              post={postToEdit}
+              handleEditPost={handleEditPost}
             />
           }
         />
+        <Route path="/user/:userId" element={<UserPage />} />
       </Routes>
     </>
   );

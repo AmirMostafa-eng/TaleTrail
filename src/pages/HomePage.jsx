@@ -29,6 +29,7 @@ export default function HomePage(props) {
     <div className="min-h-screen bg-gray-50">
       <NavBar
         userName={loggedUser && loggedUser.name}
+        userId={loggedUser && loggedUser.id}
         handleLogOut={handleLogOut}
       />
       <Container maxWidth="lg" className="py-4">
@@ -43,8 +44,8 @@ export default function HomePage(props) {
               backgroundColor: "var(--dark-gray)",
               color: "white",
               "&:hover": {
-                backgroundColor: "var(--neutral-gray)", 
-                color: "var(--dark-gray)", 
+                backgroundColor: "var(--neutral-gray)",
+                color: "var(--dark-gray)",
               },
             }}
             aria-label="add"

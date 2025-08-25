@@ -12,34 +12,49 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router";
 
-export default function PostCard({ post, user, isOwner , handleOpen , handleEditPost}) {
+export default function PostCard({
+  post,
+  user,
+  isOwner,
+  handleOpen,
+  handleEditPost,
+}) {
   const avatarLetter = user.name.charAt(0).toUpperCase();
 
   return (
-    <Card
-      sx={{ marginX: "auto", marginBottom: 3, maxWidth: 500, width: "100%" }}
-    >
+    <Card sx={{ width: "100%" }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ backgroundColor: "var(--dark-gray)" }}>
-            {avatarLetter}
-          </Avatar>
+          <Link to={`/user/${user.id}`} style={{ textDecoration: "none" }}>
+            <Avatar
+              sx={{ backgroundColor: "var(--dark-gray)", cursor: "pointer" }}
+            >
+              {avatarLetter}
+            </Avatar>
+          </Link>
         }
         action={
           isOwner && (
             <div>
               <Link to="/post">
-                <IconButton onClick={()=> handleEditPost(post)}>
+                <IconButton onClick={() => handleEditPost(post)}>
                   <EditIcon sx={{ color: "var(--mustard-yellow)" }} />
                 </IconButton>
               </Link>
-              <IconButton onClick={()=>handleOpen(post)}>
+              <IconButton onClick={() => handleOpen(post)}>
                 <DeleteIcon sx={{ color: "var(--soft-red)" }} />
               </IconButton>
             </div>
           )
         }
-        title={user.name}
+        title={
+          <Link
+            to={`/user/${user.id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            {user.name}
+          </Link>
+        }
         subheader={post.publishedAt}
       />
       <CardMedia
@@ -49,8 +64,16 @@ export default function PostCard({ post, user, isOwner , handleOpen , handleEdit
         alt={post.title}
       />
       <CardContent>
-        <Typography variant="h5" fontSize={18} fontWeight={500}>{post.title}</Typography>
-        <Typography variant="body1" sx={{color: 'var(--dark-gray)'}} fontSize={12}>{post.content}</Typography>
+        <Typography variant="h5" fontSize={18} fontWeight={500}>
+          {post.title}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{ color: "var(--dark-gray)" }}
+          fontSize={12}
+        >
+          {post.content}
+        </Typography>
       </CardContent>
     </Card>
   );

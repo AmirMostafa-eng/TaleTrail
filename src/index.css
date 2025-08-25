@@ -3,11 +3,16 @@
   themes: light --default;
 }
 
-:root{
-  --mustard-yellow: #FACC15;
-  --soft-red: #F87171;
-  --neutral-gray: #E5E7EB;
+:root {
+  --mustard-yellow: #facc15;
+  --soft-red: #f87171;
+  --neutral-gray: #e5e7eb;
   --dark-gray: #374151;
-  --off-white: #FAFAFA;
-  --black-color: #1F2937;
+  --off-white: #fafafa;
+  --black-color: #1f2937;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

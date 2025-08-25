@@ -12,8 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { Stack } from "@mui/material";
 import { Link } from "react-router";
 
-export default function NavBar({ userName , handleLogOut}) {
-  console.log(userName);
+export default function NavBar({ userName, handleLogOut, userId }) {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -24,12 +23,12 @@ export default function NavBar({ userName , handleLogOut}) {
     setAnchorElUser(null);
   };
 
-  const handleLoggingOut =()=>{
+  const handleLoggingOut = () => {
     handleCloseUserMenu();
-    sessionStorage.removeItem('loggedUser');
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem("loggedUser");
+    sessionStorage.removeItem("token");
     handleLogOut();
-  }
+  };
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "var(--dark-gray)" }}>
@@ -38,7 +37,7 @@ export default function NavBar({ userName , handleLogOut}) {
           <Link to="/">
             <Stack direction="row" alignItems="center">
               <img
-                src="./src/assets/TaleTrail_Logo_with_Seamless_Sketch_Integration-removebg-preview.png"
+                src="../src/assets/TaleTrail_Logo_with_Seamless_Sketch_Integration-removebg-preview.png"
                 width={70}
                 alt=""
                 // srcset=""
@@ -66,14 +65,23 @@ export default function NavBar({ userName , handleLogOut}) {
           </Link>
 
           {userName && (
-            <Box sx={{ flexGrow: 0 }}>
+            <Box
+              sx={{
+                flexGrow: 0,
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+              }}
+            >
+              <Typography sx={{ color: "white" }}>{userName}</Typography>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt={userName.toUpperCase()}
-                    src="/static/images/avatar/2.jpg"
                     sx={{ backgroundColor: "var(--mustard-yellow)" }}
-                  />
+                  >
+                    {userName.charAt(0).toUpperCase()}
+                  </Avatar>
                 </IconButton>
               </Tooltip>
               <Menu
@@ -92,10 +100,16 @@ export default function NavBar({ userName , handleLogOut}) {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
+                <Link
+                  to={`/user/${userId}`}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">Profile</Typography>
+                  </MenuItem>
+                </Link>
                 <MenuItem onClick={handleLoggingOut}>
-                  <Typography sx={{ textAlign: "center" }}>
-                    Logout
-                  </Typography>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
               </Menu>
             </Box>

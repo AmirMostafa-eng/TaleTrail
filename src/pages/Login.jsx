@@ -19,7 +19,7 @@ import { useNavigate } from "react-router";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "../api/axios";
 
-export default function Login({ users, loggedInUser, handleLogIn }) {
+export default function Login({ loggedInUser, handleLogIn }) {
   const navigate = useNavigate();
 
   useEffect(() => {
